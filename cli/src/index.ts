@@ -1,7 +1,7 @@
 import * as commandLineArgs from 'command-line-args';
 import { register } from 'ts-node';
 import { resolve } from 'path';
-import { Seeder } from 'mongo-seeding';
+import { Seeder } from '@conpago/mongo-seeding';
 import {
   cliOptions,
   validateOptions,
@@ -9,7 +9,7 @@ import {
 } from './options';
 import { showHelp, shouldShowHelp } from './help';
 import { CommandLineArguments, CliSpecificOptions } from './types';
-import { DeepPartial } from 'mongo-seeding/dist/common';
+import { DeepPartial } from '@conpago/mongo-seeding/dist/common';
 
 class CliSeeder {
   run = async () => {
@@ -59,7 +59,7 @@ class CliSeeder {
   private useCliSpecificOptions(options: DeepPartial<CliSpecificOptions> = {}) {
     if (!options.silent) {
       // Enable debug output for Mongo Seeding
-      process.env.DEBUG = 'mongo-seeding';
+      process.env.DEBUG = '@conpago/mongo-seeding';
     }
 
     register({

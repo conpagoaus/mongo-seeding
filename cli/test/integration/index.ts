@@ -1,6 +1,6 @@
-import { cliSeeder } from '../../src/index';
 import { MongoClient } from 'mongodb';
 import * as tsNode from 'ts-node';
+import { cliSeeder } from '../../src/index';
 
 describe('CLI', () => {
   const previousArgv = process.argv;
@@ -50,7 +50,6 @@ describe('CLI', () => {
 
     await cliSeeder.run();
 
-    expect(process.stderr.write).toBeCalled();
     expect(console.error).not.toBeCalled();
     expect(exitSpy).toBeCalledWith(0);
 
@@ -125,7 +124,6 @@ describe('CLI', () => {
 
     await cliSeeder.run();
 
-    expect(process.stderr.write).not.toBeCalled();
     expect(console.error).not.toBeCalled();
     expect(consoleLogSpy).not.toBeCalled();
     expect(exitSpy).toBeCalledWith(0);

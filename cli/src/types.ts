@@ -1,5 +1,8 @@
-import { SeederConfig, SeederCollectionReadingOptions } from 'mongo-seeding';
-import { DeepPartial } from 'mongo-seeding/dist/common';
+import {
+  SeederConfig,
+  SeederCollectionReadingOptions,
+} from '@conpago/mongo-seeding';
+import { DeepPartial } from '@conpago/mongo-seeding/dist/common';
 
 export interface CommandLineOption {
   name: string;

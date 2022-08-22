@@ -1,4 +1,4 @@
-import { Seeder } from 'mongo-seeding';
+import { Seeder } from '@conpago/mongo-seeding';
 import {
   createConfigFromOptions,
   convertEmptyObjectToUndefined,

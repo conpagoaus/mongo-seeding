@@ -65,25 +65,27 @@
     "build": "npm run cleanup; tsc",
     "cleanup": "rm -rf ./dist",
     "preversion": "npm run build",
-    "test": "jest -i",
+    "test": "DEBUG=app:error jest -i",
     "test:unit": "jest unit",
     "test:integration": "jest integration",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch --coverage"
   },
   "dependencies": {
+    "@conpago/mongo-seeding": "^4.1.0",
     "command-line-args": "^5.2.1",
     "command-line-usage": "^6.1.3",
     "extend": "^3.0.2",
-    "mongo-seeding": "^4.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   },
   "devDependencies": {
     "@types/command-line-args": "^5.2.0",
+    "@types/debug": "^4.1.7",
     "@types/extend": "^3.0.1",
     "@types/jest": "^28.1.7",
     "@types/node": "^18.7.9",
+    "debug": "^4.3.4",
     "jest": "^28.1.3",
     "mongodb": "4.9.0",
     "ts-jest": "^28.0.8"

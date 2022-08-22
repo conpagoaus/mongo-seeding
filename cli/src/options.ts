@@ -5,8 +5,8 @@ import {
   CommandLineArguments,
   PartialCliOptions,
 } from './types';
-import { SeederDatabaseConfigObjectOptions } from 'mongo-seeding/dist/database';
-import { Seeder, SeederCollectionReadingOptions } from 'mongo-seeding';
+import { SeederDatabaseConfigObjectOptions } from '@conpago/mongo-seeding/dist/database';
+import { Seeder, SeederCollectionReadingOptions } from '@conpago/mongo-seeding';
 
 export const DEFAULT_INPUT_PATH = './';
 export const DEFAULT_EXTENSIONS = ['ts', 'js', 'cjs', 'json'];
