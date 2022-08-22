@@ -23,7 +23,7 @@ app.use(`/`, api);
 
 mongoose.connect(
   `mongodb://localhost:27017/mydb`,
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  { useCreateIndex: true },
   (err, res) => {
     if (err) {
       throw err;

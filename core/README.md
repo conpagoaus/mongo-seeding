@@ -13,9 +13,9 @@ The ultimate solution for populating your MongoDB database. Define the data in J
 - [Installation](#installation)
 - [Usage](#usage)
 - [API description](#api-description)
-  * [`constructor(partialConfig?)`](#constructorpartialconfig)
-  * [`readCollectionsFromPath(path, partialOptions?)`](#readcollectionsfrompathpath-partialoptions)
-  * [`import(collections, partialConfig?)`](#importcollections-partialconfig)
+  - [`constructor(partialConfig?)`](#constructorpartialconfig)
+  - [`readCollectionsFromPath(path, partialOptions?)`](#readcollectionsfrompathpath-partialoptions)
+  - [`import(collections, partialConfig?)`](#importcollections-partialconfig)
 - [Debug output](#debug-output)
 
 <!-- tocstop -->
@@ -68,7 +68,9 @@ npm install mongo-seeding --save
 
     ```javascript
     const path = require('path');
-    const collections = seeder.readCollectionsFromPath(path.resolve("./your/path"));
+    const collections = seeder.readCollectionsFromPath(
+      path.resolve('./your/path'),
+    );
     ```
 
 1.  Seed your database:
@@ -92,12 +94,12 @@ npm install mongo-seeding --save
         .then(() => {
           // Do whatever you want after successful import
         })
-        .catch(err => {
+        .catch((err) => {
           // Handle errors
         });
       ```
 
-See an [**import data example**](https://github.com/pkosiec/mongo-seeding/blob/main/examples/import-data) for a sample Node.js application utilizing the library. 
+See an [**import data example**](https://github.com/pkosiec/mongo-seeding/blob/main/examples/import-data) for a sample Node.js application utilizing the library.
 
 ## API description
 
@@ -120,7 +122,6 @@ export interface SeederConfig {
   dropDatabase: boolean; // drops entire database before import
   dropCollections: boolean; // drops every collection which is being imported
   mongoClientOptions?: MongoClientOptions; // optional MongoDB connect options
-  collectionInsertManyOptions?: CollectionInsertManyOptions; // optional MongoDB collection import options
 }
 
 export interface SeederDatabaseConfigObject {
@@ -134,7 +135,7 @@ export interface SeederDatabaseConfigObject {
 }
 
 export type SeederDatabaseConfigObjectOptions = {
-  [key:string]: string; 
+  [key: string]: string;
 };
 ```
 
@@ -152,13 +153,12 @@ const defaultConfig = {
     port: 27017,
     name: 'database',
     username: undefined,
-    password: undefined, 
+    password: undefined,
   },
   databaseReconnectTimeout: 10000,
   dropDatabase: false,
   dropCollections: false,
   mongoClientOptions: undefined,
-  collectionInsertManyOptions: undefined;
 };
 ```
 
@@ -186,14 +186,12 @@ const collectionReadingOptions = {
   ejsonParseOptions: {
     relaxed: false,
   },
-  transformers: [
-    Seeder.Transformers.replaceDocumentIdWithUnderscoreId,
-  ]
-}
+  transformers: [Seeder.Transformers.replaceDocumentIdWithUnderscoreId],
+};
 
 const collections = seeder.readCollectionsFromPath(
   path.resolve('./your/path'),
-  collectionReadingOptions
+  collectionReadingOptions,
 );
 ```
 

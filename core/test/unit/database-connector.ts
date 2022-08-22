@@ -111,14 +111,12 @@ describe('DatabaseConnector', () => {
           'mongodb://[secure]@foo.bar:27017/dbName?retryWrites=true',
       },
       {
-        uri:
-          'mongodb://myDBReader:D1fficultP%40ssw0rd@mongodb0.example.com:27017,mongodb1.example.com:27017,mongodb2.example.com:27017/admin?replicaSet=myRepl',
+        uri: 'mongodb://myDBReader:D1fficultP%40ssw0rd@mongodb0.example.com:27017,mongodb1.example.com:27017,mongodb2.example.com:27017/admin?replicaSet=myRepl',
         expectedMaskedUri:
           'mongodb://[secure]@mongodb0.example.com:27017,mongodb1.example.com:27017,mongodb2.example.com:27017/admin?replicaSet=myRepl',
       },
       {
-        uri:
-          'mongodb://10.10.10.1:27017/dbName?retryWrites=true&something=false',
+        uri: 'mongodb://10.10.10.1:27017/dbName?retryWrites=true&something=false',
         expectedMaskedUri:
           'mongodb://10.10.10.1:27017/dbName?retryWrites=true&something=false',
       },
@@ -152,17 +150,14 @@ describe('DatabaseConnector', () => {
       }),
     );
 
-    const opts: MongoClientOptions = {
-      acceptableLatencyMS: 3000,
-      domainsEnabled: true,
-      bufferMaxEntries: 1,
-    };
-
-    const connector = new DatabaseConnector(3000, opts);
+    const connector = new DatabaseConnector(3000);
 
     await connector.connect(uri);
 
-    expect(MongoClient).toBeCalledWith(uri, opts);
+    expect(MongoClient).toBeCalledWith(uri, {
+      ignoreUndefined: true,
+      connectTimeoutMS: 3000,
+    });
     expect(MongoClient).toBeCalledTimes(1);
     expect(connectMock).toBeCalledTimes(1);
   });

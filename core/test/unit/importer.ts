@@ -1,6 +1,5 @@
 import { CollectionImporter } from '../../src/importer';
 import { Database } from '../../src/database';
-import { CollectionInsertManyOptions } from 'mongodb';
 import { SeederCollection } from '../../src/common';
 
 describe('Collection Importer', () => {
@@ -10,11 +9,7 @@ describe('Collection Importer', () => {
 
     db.insertDocumentsIntoCollection = jest.fn();
 
-    const opts: CollectionInsertManyOptions = {
-      ordered: true,
-      bypassDocumentValidation: true,
-    };
-    const importer = new CollectionImporter(db, opts);
+    const importer = new CollectionImporter(db);
     importer.import([collection]);
 
     // @ts-ignore
@@ -22,7 +17,6 @@ describe('Collection Importer', () => {
     expect(db.insertDocumentsIntoCollection).toBeCalledWith(
       collection.documents,
       collection.name,
-      opts,
     );
   });
 });

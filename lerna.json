@@ -1,5 +1,5 @@
 {
-  "version": "3.7.2",
+  "version": "4.1.0",
   "packages": [
     "cli",
     "core",
@@ -23,5 +23,5 @@
       ":hammer: maintenance": ":hammer: Maintenance"
     }
   },
-  "lerna": "3.13.0"
+  "lerna": "5.4.3"
 }

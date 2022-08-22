@@ -1,4 +1,4 @@
-import { Db } from 'mongodb';
+import { Db, ObjectId } from 'mongodb';
 
 export async function listExistingCollections(db: Db): Promise<string[]> {
   const collections = await db.listCollections().toArray();
@@ -9,7 +9,7 @@ export async function createCollection(db: Db, collectionName: string) {
   await db.createCollection(collectionName);
 }
 
-export function removeUnderscoreIdProperty(obj: { _id: string }) {
+export function removeUnderscoreIdProperty(obj: { _id: ObjectId }) {
   const newObj = { ...obj };
   // @ts-ignore
   delete newObj._id;
